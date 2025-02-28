@@ -64,6 +64,37 @@
             }
         }
 
+        async function fetchData() {
+    const url = 'https://jsonplaceholder.typicode.com/posts'; // API di esempio
+    const data = {
+        title: 'foo',
+        body: 'bar',
+        userId: 1
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Errore HTTP! Stato: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('Risposta API:', result);
+    } catch (error) {
+        console.error('Errore nella richiesta:', error);
+    }
+}
+
+fetchData();
+
+
         // Chiamata alla funzione per eseguire la richiesta
         fetchDatiAPI();
 
