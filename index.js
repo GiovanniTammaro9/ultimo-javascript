@@ -58,6 +58,24 @@ async function fetchData() {
   }
 }
 
+async function fetchCorsError() {
+  const url = 'https://www.google.com/'; // Google blocca le richieste CORS
+
+  try {
+      const response = await fetch(url);
+      const data = await response.text();
+      console.log('Dati ricevuti:', data);
+  } catch (error) {
+      console.error('Errore CORS:', error);
+  }
+}
+
+fetchCorsError();
+
+
+
+
+
 fetchData();
 
 
